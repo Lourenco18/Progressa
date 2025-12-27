@@ -1,31 +1,18 @@
-import { Stack, useRouter } from "expo-router";
-import { useEffect } from "react";
+import { Stack } from "expo-router";
+import { AuthProvider } from "./context/AuthContext";
 import { LanguageProvider } from "./context/LanguageContext";
 import { ThemeProvider } from "./context/ThemeContext";
-
-function RootGuard({ children }: { children: React.ReactNode }) {
-  const isAuth = false;
-  const router = useRouter();
-
-  useEffect(() => {
-    if (!isAuth) {
-      router.replace("/auth");
-    }
-  });
-
-  return <>{children}</>;
-
-}
 
 export default function RootLayout() {
   return (
     <LanguageProvider>
       <ThemeProvider>
-        <RootGuard>
+        <AuthProvider>
           <Stack>
-            <Stack.Screen name="(tabs)" options={{ headerShadowVisible: false }} />
+            <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+            <Stack.Screen name="auth" options={{ headerShown: false }} />
           </Stack>
-        </RootGuard>
+        </AuthProvider>
       </ThemeProvider>
     </LanguageProvider>
   );

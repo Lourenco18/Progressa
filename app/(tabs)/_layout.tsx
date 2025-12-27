@@ -1,9 +1,6 @@
 import { Tabs } from "expo-router";
 import React from 'react';
-import { View } from 'react-native';
-import { LanguageSelector } from "../components/LanguageSelector";
 import { ThemedIcon } from "../components/ThemedIcon";
-import { ThemeToggleButton } from "../components/ThemeToggleButton";
 import { useLanguage } from "../context/LanguageContext";
 import { useTheme } from "../context/ThemeContext";
 
@@ -27,12 +24,6 @@ export default function TabsLayout() {
         headerTitleStyle: {
           color: colors.text,
         },
-        headerRight: () => (
-          <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-            <LanguageSelector />
-            <ThemeToggleButton />
-          </View>
-        ),
       }}
     >
       <Tabs.Screen
@@ -49,7 +40,34 @@ export default function TabsLayout() {
           ),
         }}
       />
-      <Tabs.Screen name="login" options={{ title: t('login') }} />
+      <Tabs.Screen
+        name="login"
+        options={{
+          title: t('login'),
+          tabBarIcon: ({ color }) => (
+            <ThemedIcon
+              name="log-in"
+              size={24}
+              color={color}
+              library="feather"
+            />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="settings"
+        options={{
+          title: t('settings'),
+          tabBarIcon: ({ color }) => (
+            <ThemedIcon
+              name="settings"
+              size={24}
+              color={color}
+              library="feather"
+            />
+          ),
+        }}
+      />
     </Tabs>
   );
 }

@@ -1,4 +1,5 @@
 import { account } from "@/lib/appwrite";
+import { useRouter } from "expo-router";
 import { useState } from "react";
 import {
   KeyboardAvoidingView,
@@ -13,6 +14,7 @@ import {
 } from "react-native";
 import { Models } from "react-native-appwrite";
 import { ThemedIcon } from "./components/ThemedIcon";
+import { useAuth } from "./context/AuthContext";
 import { useLanguage } from "./context/LanguageContext";
 import { useTheme } from "./context/ThemeContext";
 
@@ -25,13 +27,28 @@ export default function AuthScreen() {
   const [showPassword, setShowPassword] = useState(false);
   const { colors, theme } = useTheme();
   const { t } = useLanguage();
+  const { refresh } = useAuth();
+  const router = useRouter();
 
   async function login(email: string, password: string) {
-    
+    try {
+      // TODO: Implementar login com Appwrite
+      // await account.createEmailPasswordSession(email, password);
+      await refresh();
+      router.replace('/(tabs)');
+    } catch (e) {
+      // manter na tela de auth em caso de erro
+    }
   }
 
   async function register(email: string, password: string, name: string) {
-    
+    try {
+
+      await refresh();
+      router.replace('/(tabs)');
+    } catch (e) {
+      // manter na tela de auth em caso de erro
+    }
   }
 
   const styles = StyleSheet.create({

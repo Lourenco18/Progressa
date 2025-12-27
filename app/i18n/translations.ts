@@ -27,8 +27,22 @@ export const translations = {
         login: 'Login',
 
         // Home Screen
+        settings: 'Definições',
+
+        // Home Screen
         editScreen: 'Edite app/index.tsx para editar esta tela.',
         loginPage: 'Página de Login',
+
+        // Settings
+        settingsTitle: 'Definições',
+        appearance: 'Aparência',
+        language: 'Idioma',
+        theme: 'Tema',
+        lightTheme: 'Claro',
+        darkTheme: 'Escuro',
+        systemTheme: 'Sistema',
+        selectLanguage: 'Selecione o idioma',
+        selectTheme: 'Selecione o tema',
     },
     en: {
         // Auth Screen
@@ -56,8 +70,22 @@ export const translations = {
         login: 'Login',
 
         // Home Screen
+        settings: 'Settings',
+
+        // Home Screen
         editScreen: 'Edit app/index.tsx to edit this screen.',
         loginPage: 'Login Page',
+
+        // Settings
+        settingsTitle: 'Settings',
+        appearance: 'Appearance',
+        language: 'Language',
+        theme: 'Theme',
+        lightTheme: 'Light',
+        darkTheme: 'Dark',
+        systemTheme: 'System',
+        selectLanguage: 'Select language',
+        selectTheme: 'Select theme',
     },
     es: {
         // Auth Screen
@@ -85,8 +113,22 @@ export const translations = {
         login: 'Acceso',
 
         // Home Screen
+        settings: 'Ajustes',
+
+        // Home Screen
         editScreen: 'Edita app/index.tsx para editar esta pantalla.',
         loginPage: 'Página de Inicio de Sesión',
+
+        // Settings
+        settingsTitle: 'Ajustes',
+        appearance: 'Apariencia',
+        language: 'Idioma',
+        theme: 'Tema',
+        lightTheme: 'Claro',
+        darkTheme: 'Oscuro',
+        systemTheme: 'Sistema',
+        selectLanguage: 'Seleccionar idioma',
+        selectTheme: 'Seleccionar tema',
     },
     fr: {
         // Auth Screen
@@ -114,8 +156,22 @@ export const translations = {
         login: 'Connexion',
 
         // Home Screen
+        settings: 'Paramètres',
+
+        // Home Screen
         editScreen: 'Modifiez app/index.tsx pour éditer cet écran.',
         loginPage: 'Page de Connexion',
+
+        // Settings
+        settingsTitle: 'Paramètres',
+        appearance: 'Apparence',
+        language: 'Langue',
+        theme: 'Thème',
+        lightTheme: 'Clair',
+        darkTheme: 'Sombre',
+        systemTheme: 'Système',
+        selectLanguage: 'Sélectionner la langue',
+        selectTheme: 'Sélectionner le thème',
     },
     de: {
         // Auth Screen
@@ -143,8 +199,22 @@ export const translations = {
         login: 'Anmeldung',
 
         // Home Screen
+        settings: 'Einstellungen',
+
+        // Home Screen
         editScreen: 'Bearbeiten Sie app/index.tsx, um diesen Bildschirm zu bearbeiten.',
         loginPage: 'Anmeldeseite',
+
+        // Settings
+        settingsTitle: 'Einstellungen',
+        appearance: 'Erscheinungsbild',
+        language: 'Sprache',
+        theme: 'Thema',
+        lightTheme: 'Hell',
+        darkTheme: 'Dunkel',
+        systemTheme: 'System',
+        selectLanguage: 'Sprache auswählen',
+        selectTheme: 'Thema auswählen',
     },
 };
 
