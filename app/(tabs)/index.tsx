@@ -1,8 +1,10 @@
 import { StyleSheet, Text, View } from "react-native";
+import { useLanguage } from "../context/LanguageContext";
 import { useTheme } from "../context/ThemeContext";
 
 export default function Index() {
   const { colors } = useTheme();
+  const { t } = useLanguage();
 
   const styles = StyleSheet.create({
     view: {
@@ -19,7 +21,7 @@ export default function Index() {
 
   return (
     <View style={styles.view}>
-      <Text style={styles.text}>Edit app/index.tsx to edit this screen.</Text>
+      <Text style={styles.text}>{t('editScreen')}</Text>
     </View>
   );
 }

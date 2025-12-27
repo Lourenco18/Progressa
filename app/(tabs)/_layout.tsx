@@ -1,12 +1,15 @@
 import { Tabs } from "expo-router";
 import React from 'react';
-import { ThemeToggleButton } from "../components/ThemeToggleButton";
+import { View } from 'react-native';
+import { LanguageSelector } from "../components/LanguageSelector";
 import { ThemedIcon } from "../components/ThemedIcon";
+import { ThemeToggleButton } from "../components/ThemeToggleButton";
+import { useLanguage } from "../context/LanguageContext";
 import { useTheme } from "../context/ThemeContext";
 
 export default function TabsLayout() {
   const { colors } = useTheme();
-
+  const { t } = useLanguage();
 
   return (
     <Tabs
@@ -24,13 +27,18 @@ export default function TabsLayout() {
         headerTitleStyle: {
           color: colors.text,
         },
-        headerRight: () => <ThemeToggleButton />,
+        headerRight: () => (
+          <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+            <LanguageSelector />
+            <ThemeToggleButton />
+          </View>
+        ),
       }}
     >
       <Tabs.Screen
         name="index"
         options={{
-          title: "",
+          title: t('home'),
           tabBarIcon: ({ color }) => (
             <ThemedIcon
               name="home"
@@ -41,7 +49,7 @@ export default function TabsLayout() {
           ),
         }}
       />
-      <Tabs.Screen name="login" options={{ title: "Login" }} />
+      <Tabs.Screen name="login" options={{ title: t('login') }} />
     </Tabs>
   );
 }

@@ -13,6 +13,7 @@ import {
 } from "react-native";
 import { Models } from "react-native-appwrite";
 import { ThemedIcon } from "./components/ThemedIcon";
+import { useLanguage } from "./context/LanguageContext";
 import { useTheme } from "./context/ThemeContext";
 
 export default function AuthScreen() {
@@ -23,13 +24,14 @@ export default function AuthScreen() {
   const [isLogin, setIsLogin] = useState(true);
   const [showPassword, setShowPassword] = useState(false);
   const { colors, theme } = useTheme();
+  const { t } = useLanguage();
 
   async function login(email: string, password: string) {
-    // Implementar login
+    
   }
 
   async function register(email: string, password: string, name: string) {
-    // Implementar registro
+    
   }
 
   const styles = StyleSheet.create({
@@ -189,7 +191,7 @@ export default function AuthScreen() {
             <View style={styles.logo}>
               <ThemedIcon name="check-circle" size={40} variant="custom" library="feather" color="#FFFFFF" />
             </View>
-            <Text style={styles.welcomeText}>Bem-vindo!</Text>
+            <Text style={styles.welcomeText}>{t('welcome')}</Text>
             <Text style={styles.subtitle}>{loggedInUser.name}</Text>
             <Text style={styles.footerText}>{loggedInUser.email}</Text>
           </View>
@@ -201,7 +203,7 @@ export default function AuthScreen() {
               setLoggedInUser(null);
             }}
           >
-            <Text style={styles.primaryButtonText}>Sair da Conta</Text>
+            <Text style={styles.primaryButtonText}>{t('logout')}</Text>
           </TouchableOpacity>
         </ScrollView>
       </View>
@@ -221,21 +223,20 @@ export default function AuthScreen() {
           <View style={styles.logo}>
             <ThemedIcon name="trending-up" size={40} variant="custom" library="feather" color="#FFFFFF" />
           </View>
-          <Text style={styles.title}>Progressa</Text>
+          <Text style={styles.title}>{t('appName')}</Text>
           <Text style={styles.subtitle}>
-            {isLogin ? 'Entre na sua conta' : 'Crie sua conta'}
+            {isLogin ? t('signIn') : t('signUp')}
           </Text>
         </View>
 
         <View style={styles.form}>
           {!isLogin && (
             <View style={styles.inputContainer}>
-              <Text style={styles.label}>Nome</Text>
+              <Text style={styles.label}>{t('name')}</Text>
               <View style={styles.inputWrapper}>
-                <ThemedIcon name="user" size={20} variant="secondary" library="feather" />
                 <TextInput
                   style={styles.input}
-                  placeholder="Seu nome completo"
+                  placeholder={t('fullName')}
                   placeholderTextColor={colors.iconSecondary}
                   value={name}
                   onChangeText={setName}
@@ -246,12 +247,11 @@ export default function AuthScreen() {
           )}
 
           <View style={styles.inputContainer}>
-            <Text style={styles.label}>Email</Text>
+            <Text style={styles.label}>{t('email')}</Text>
             <View style={styles.inputWrapper}>
-              <ThemedIcon name="mail" size={20} variant="secondary" library="feather" />
               <TextInput
                 style={styles.input}
-                placeholder="seu@email.com"
+                placeholder={t('emailPlaceholder')}
                 placeholderTextColor={colors.iconSecondary}
                 value={email}
                 onChangeText={setEmail}
@@ -262,12 +262,11 @@ export default function AuthScreen() {
           </View>
 
           <View style={styles.inputContainer}>
-            <Text style={styles.label}>Senha</Text>
+            <Text style={styles.label}>{t('password')}</Text>
             <View style={styles.inputWrapper}>
-              <ThemedIcon name="lock" size={20} variant="secondary" library="feather" />
               <TextInput
                 style={styles.input}
-                placeholder="••••••••"
+                placeholder={t('passwordPlaceholder')}
                 placeholderTextColor={colors.iconSecondary}
                 value={password}
                 onChangeText={setPassword}
@@ -293,14 +292,14 @@ export default function AuthScreen() {
             onPress={() => isLogin ? login(email, password) : register(email, password, name)}
           >
             <Text style={styles.primaryButtonText}>
-              {isLogin ? 'Entrar' : 'Criar Conta'}
+              {isLogin ? t('signInButton') : t('signUpButton')}
             </Text>
           </TouchableOpacity>
         </View>
 
         <View style={styles.divider}>
           <View style={styles.dividerLine} />
-          <Text style={styles.dividerText}>OU</Text>
+          <Text style={styles.dividerText}>{t('or')}</Text>
           <View style={styles.dividerLine} />
         </View>
 
@@ -309,15 +308,13 @@ export default function AuthScreen() {
           onPress={() => setIsLogin(!isLogin)}
         >
           <Text style={styles.secondaryButtonText}>
-            {isLogin ? 'Criar nova conta' : 'Já tenho uma conta'}
+            {isLogin ? t('createAccount') : t('haveAccount')}
           </Text>
         </TouchableOpacity>
 
         <View style={styles.footer}>
           <Text style={styles.footerText}>
-            {isLogin
-              ? 'Novo no Progressa? Comece agora!'
-              : 'Já tem uma conta? Entre agora!'}
+            {isLogin ? t('newUser') : t('existingUser')}
           </Text>
         </View>
       </ScrollView>

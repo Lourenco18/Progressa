@@ -1,8 +1,10 @@
 import { StyleSheet, Text, View } from "react-native";
+import { useLanguage } from "../context/LanguageContext";
 import { useTheme } from "../context/ThemeContext";
 
 export default function LoginScreen() {
     const { colors } = useTheme();
+    const { t } = useLanguage();
 
     const styles = StyleSheet.create({
         container: {
@@ -20,7 +22,7 @@ export default function LoginScreen() {
 
     return (
         <View style={styles.container}>
-            <Text style={styles.text}>Login page</Text>
+            <Text style={styles.text}>{t('loginPage')}</Text>
         </View>
     );
 }

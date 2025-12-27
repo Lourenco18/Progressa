@@ -1,5 +1,6 @@
 import { Stack, useRouter } from "expo-router";
 import { useEffect } from "react";
+import { LanguageProvider } from "./context/LanguageContext";
 import { ThemeProvider } from "./context/ThemeContext";
 
 function RootGuard({ children }: { children: React.ReactNode }) {
@@ -18,16 +19,14 @@ function RootGuard({ children }: { children: React.ReactNode }) {
 
 export default function RootLayout() {
   return (
-
-
-
-    <ThemeProvider>
-      <RootGuard>
-        <Stack>
-          <Stack.Screen name="(tabs)" options={{ headerShadowVisible: false }} />
-        </Stack>
-      </RootGuard>
-    </ThemeProvider>
-
+    <LanguageProvider>
+      <ThemeProvider>
+        <RootGuard>
+          <Stack>
+            <Stack.Screen name="(tabs)" options={{ headerShadowVisible: false }} />
+          </Stack>
+        </RootGuard>
+      </ThemeProvider>
+    </LanguageProvider>
   );
 }
