@@ -15,7 +15,6 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
     const checkAuth = useCallback(async () => {
         try {
-            // Try to get current account; if it throws, user is not logged in
             const user = await account.get();
             setIsAuthenticated(!!user);
         } catch (e) {
